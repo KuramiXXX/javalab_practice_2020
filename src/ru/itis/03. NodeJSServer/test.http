@@ -1,0 +1,10 @@
+POST localhost:80/request
+Content-Type: application/json
+
+{
+  "username": "test",
+  "request_time": "12:23",
+  "request_message": "test test test"
+}
+
+###

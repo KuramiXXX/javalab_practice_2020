@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <title>Заявка</title>
+
+    <meta name="viewport" content="wigth=device-width, initial-scale=1">
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+            integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
+            crossorigin="anonymous"></script>
+
+</head>
+
+<script>
+    function sendRequest() {
+        $.post('/request', {
+            username: $('#Name').val(),
+            request_time: $('#Time').val(),
+            request_message: $('#RequestText').val()
+        });
+        alert('Заявка отправлена!');
+    }
+</script>
+
+<body>
+
+<table
+        border="1"
+        align="center"
+        rules="rows"
+        style="width:60%;">
+    <tr>
+        <td>
+            <table
+                    border="1"
+                    background="images/168.png"
+                    bgcolor="#7FFFD4"
+                    cellpadding="10"
+                    style="width:100%; border-radius:5px;">
+                <tr>
+                    <th>
+                        <h1>Оставьте вашу заявку!</h1>
+                        <h3>тут вы пока что не найдете ничего интересного, увы</h3>
+                    </th>
+                </tr>
+            </table>
+            <table
+                    border="1"
+                    bgcolor="#e6e6fa"
+                    cellpadding="10"
+                    style="width:100%; border-radius:5px;">
+                <tr>
+                    <td
+                            rowspan="2"
+                            style="width:80%">
+                        <h2>Заполнение формы</h2>
+
+                        <div class="container"
+                             style="background-color:#ffffff; margin-top:50px; padding: 20px 20px 20px 20px;">
+                            <input id="Name" type="text" placeholder="Имя" class="container"
+                                   style="margin-bottom: 10px; width: 200px">
+                            <br>
+                            <input id="Time" type="time" placeholder="Время" class="container"
+                                   style="margin-bottom: 10px; width: 200px">
+                            <br>
+                            <textarea id="RequestText" style="resize: none; width: 100%; padding: 10px 10px 10px 10px;"
+                                      rows="5" placeholder="Текст заявки"></textarea>
+                            <br>
+                            <button onclick="sendRequest()">Отправить</button>
+                        </div>
+                    </td>
+
+                    <td bgcolor="#e6e6fa">
+                        <h3>Меню</h3>
+                        <p>
+                            <a href="model.html">
+                                <span style="margin-left:5px;">Главная</span></a>
+
+                        </p>
+                        <p>
+                            <a href="request.html">
+                                <span style="margin-left:5px;">Оставить заявку</span></a>
+                        </p>
+                        <p>
+                            <a href="people.html">
+                                <span style="margin-left:5px;">Получить все заявки</span></a>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td
+                            bgcolor="#e6e6fa"
+                            align="center">
+                        <h3>Общая информация</h3>
+                        <p>Тестовое задание ИТИС JavaLab 2020 1 курс</p>
+                    </td>
+                </tr>
+            </table>
+            <table
+                    border="1"
+                    background="images/168.png"
+                    height="100"
+                    cellpadding="10"
+                    style="width:100%; border-radius:5px;">
+                <tr>
+                    <th>
+                        <h3>Подвал</h3>
+                    </th>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

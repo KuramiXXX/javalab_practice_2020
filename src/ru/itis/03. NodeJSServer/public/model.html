@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+            integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
+            crossorigin="anonymous"></script>
+    <title>Тестовое задание</title>
+
+    <meta name="viewport" content="wigth=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+
+</head>
+
+<script>
+    x = 0;
+
+    function getInfo() {
+        $.getJSON("/about", function (response) {
+            let html = "<table>";
+            html += response;
+            html += "</table>";
+            if (x > 10)
+                alert('Хорош, чел, хватит');
+            else
+                $("#about_me").append(html);
+            x++;
+        });
+    }
+</script>
+
+<body>
+
+<!--Создаём таблицу контейнер, которой задаём следующее
+оформление:
+border="1" - рамка вокруг контейнера. Увеличив число, можно увеличить толщину рамки.
+align="center" - размещаем контейнер по центру экрана.
+rules="rows" - убираем двойную рамку.
+style="width:60%;" - добавляем стилевое свойства, делающее
+контейнер и весь сайт "резиновым".
+Сделать полноценный адаптивный дизайн, этим способом невозможно.-->
+<table
+        border="1"
+        align="center"
+        rules="rows"
+        style="width:60%;">
+    <!--Создаём строку-->
+    <tr>
+        <!--Создаём ячейку строки-->
+        <td>
+            <!--ШАПКА САЙТА-->
+
+            <!--В ячейке строки создаём ещё одну таблицу для шапки сайта.
+            Оформление:
+            border="1" - двойная рамка толщиной в 1px
+            background="images/168.png" - картинка в шапке сайта, если требуется.
+            Адрес картинки вы должны вставить свой.
+            bgcolor="#7FFFD4" - фоновый цвет в шапке, если нет картинки.
+            cellpadding="10" - отступ содержимого от рамки не менее 10px.
+            style="width:100%; border-radius:5px;" - добавляем "резиновость"
+            и закругляем уголки рамки-->
+            <table
+                    border="1"
+                    background="images/168.png"
+                    bgcolor="#7FFFD4"
+                    cellpadding="10"
+                    style="width:100%; border-radius:5px;">
+                <!--Создаём строку таблицы-->
+                <tr>
+                    <!--Создаём столбец таблицы-->
+                    <th>
+                        <!--Содержание ячейки столбца-->
+                        <h1>Максик Иванов</h1>
+                        <h3>тут вы пока что не найдете ничего интересного, увы</h3>
+                        <!--Закрываем таблицу-->
+                    </th>
+                </tr>
+            </table>
+
+            <!--ОСНОВНОЙ КОНТЕНТ-->
+
+            <!--В этой же ячейке контейнера создаём ещё одну таблицу
+            для основного контента.
+            Оформление как и в предыдущей таблице-->
+
+            <table
+                    border="1"
+                    bgcolor="#e6e6fa"
+                    cellpadding="10"
+                    style="width:100%; border-radius:5px;">
+                <!--Создаём строку-->
+                <tr>
+                    <!--Создаём ячейку
+                    Оформление:
+                    rowspan="2" - объединяем две ячейки в одну.
+                    Число объединяемых ячеек по числу ячеек в сайдбаре.
+                    style="width:80%" - основной контент занимает 80% всей площади,
+                    оставшиеся 20% для сайдбара-->
+                    <td
+                            rowspan="2"
+                            style="width:80%">
+                        <button onclick="getInfo()">Обо мне</button>
+                        <div id="about_me"></div>
+                        <!--Начинаем абзац с красной строки-->
+                        <p style="text-indent:20px">
+                            Здравствуйте, многоуважаемые многоликие поклонники моего божественного культа Многоликого
+                            Светлого Солнца!</p>
+
+                        <p style="text-indent:20px">
+                            Тьфу, меня куда-то не туда понесло. Извините.</p>
+
+                        <p style="text-indent:20px">
+                            В общем, я Максик, обо мне вам знать ничего не нужно, ибо это просто тестовое задание</p>
+
+                        <!--Закрываем ячейку-->
+                    </td>
+
+                    <!--САЙДБАР-->
+
+                    <!--Создаём ячейку сайдбара-->
+                    <td bgcolor="#e6e6fa">
+                        <h3>Меню</h3>
+                        <!--Абзац для ссылки на страницу сайта-->
+                        <p>
+                            <!--Ссылка на страницу сайта-->
+                            <a href="model.html">
+                                <!--Название страницы
+                                style="margin-left:5px;" - отступ названия от маркера-->
+                                <span style="margin-left:5px;">Главная</span></a>
+                            <!--Закрываем абзац-->
+                        </p>
+                        <p>
+                            <a href="request.html">
+                                <span style="margin-left:5px;">Оставить заявку</span></a>
+                        </p>
+                        <p>
+                            <a href="people.html">
+                                <span style="margin-left:5px;">Получить все заявки</span></a>
+                        </p>
+                        <!--Закрываем строку Меню-->
+                    </td>
+                </tr>
+                <!--Создаём строку с дополнительной информацией-->
+                <tr>
+                    <!--Ячейка с дополнительной информацией-->
+                    <td
+                            bgcolor="#e6e6fa"
+                            align="center">
+                        <h3>Общая информация</h3>
+                        <p>Тестовое задание ИТИС JavaLab 2020 1 курс</p>
+                        <!--Закрываем ячейку с общей информацией
+                        и таблицу основного контента-->
+                    </td>
+                </tr>
+            </table>
+
+            <!--ПОДВАЛ-->
+
+            <!--Создаём таблицу подвала-->
+            <table
+                    border="1"
+                    background="images/168.png"
+                    height="100"
+                    cellpadding="10"
+                    style="width:100%; border-radius:5px;">
+                <!--Создаём строку.-->
+                <tr>
+                    <!--Создаём столбец-->
+                    <th>
+                        <h3>Подвал</h3>
+                        <!--Закрываем таблицу подвала. При желании в подвале можно
+                        сделать несколько строк и столбцов-->
+                    </th>
+                </tr>
+            </table>
+            <!--Закрываем таблицу контейнера-->
+        </td>
+    </tr>
+</table>
+</body>
+</html>
