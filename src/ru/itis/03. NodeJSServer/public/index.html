@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Мой сайт</title>
+
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="bootstrap-4.0.0-dist/css/bootstrap.css">
+
+    <script src="bootstrap-4.0.0-dist/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+			integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
+			crossorigin="anonymous"></script>
+
+</head>
+<script>
+	function getProfile() {
+		$.getJSON("/profile", function (response) {
+			let text = response["first_name"] + " " +
+					response["last_name"] + ", " +
+					response["age"];
+			$("#name_age").append(text);
+			text = response["profession"];
+			$("#profession").append(text);
+			text = "<ul>"
+			for(let i = 0; i < response["skills"].length; i++) {
+				text += ("<li>" + response["skills"][i] + "</li>");
+			}
+			text += "</ul>"
+			$("#skills").append(text);
+			text = response["info"];
+			$("#info").append(text);
+			text = response["phone"];
+			$("#phone").append(text);
+			text = response["email"];
+			$("#email").append(text);
+		})
+	}
+</script>
+<body background="images/2.jpg" onload="getProfile()">
+
+	<div class="container"  style="background-color:#ffffff; margin-top:50px; padding: 20px 20px 20px 20px;">
+		<h2 id="name_age"></h2>
+		<h5 id="profession"></h5>
+		<div class="row" style="margin: 20px 20px 20px 20px">
+			<div class="col-4  bg-primary" style="background-image: url('images/168.png')"><h2 style="color: #ffffff">Skills</h2><p id="skills"></p></div>
+			<div class="col-1"></div>
+			<div class="col-7 bg-primary" style="background-image: url('images/168.png')"><h2 style="color: #ffffff">Info</h2><p id="info"></p></div>
+		</div>
+		<table class="table">
+			<tr>
+				<td>Phone</td>
+				<td id="phone"></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td id="email"></td>
+			</tr>
+		</table>
+		<a href="request.html" class="btn btn-success">Оставить заявку</a>
+		<a href="resumes.html" class="btn btn-info">Получить все заявки</a>
+	</div>
+</body>
+</html>
